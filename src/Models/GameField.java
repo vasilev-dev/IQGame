@@ -68,13 +68,18 @@ public class GameField {
      * @exception NullPointerException if input game object is null
      * @exception IllegalArgumentException if collection already contains input object
      */
-    public void addGameObject(GameObject obj) {
+    public void addGameObject(GameObject obj) throws IllegalArgumentException {
         if(obj == null) {
             throw new NullPointerException("You are trying to add an nullable GameObject to collection!");
         }
 
         if(_gameObjects.contains(obj)) {
             throw new IllegalArgumentException("Collection of game objects already contains this object!");
+        }
+
+        if(obj._field != this && obj._field != null) {
+            throw new IllegalArgumentException("You are trying to add an object to a field " +
+                    "that is already bound to another field.");
         }
 
         _gameObjects.add(obj);
@@ -96,6 +101,7 @@ public class GameField {
         }
 
         _gameObjects.remove(obj);
+        obj._field = null;
     }
 
     public Collection<GameObject> getGameObjects() {

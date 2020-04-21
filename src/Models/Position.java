@@ -19,17 +19,17 @@ public class Position {
      * @return next position
      */
     public Position next(Direction.DirectionConstant direction) {
-        if(direction == Direction.DirectionConstant.NORTH) {
-            return new Position(_x, _y - 1);
-        }
-        else if(direction == Direction.DirectionConstant.SOUTH) {
-            return new Position(_x, _y + 1);
-        }
-        else if(direction == Direction.DirectionConstant.WEST) {
-            return new Position(_x - 1, _y);
-        }
-        else {
-            return new Position(_x + 1, _y);
+        switch (direction) {
+            case NORTH:
+                return new Position(_x, _y - 1);
+            case SOUTH:
+                return new Position(_x, _y + 1);
+            case EAST:
+                return new Position(_x + 1, _y);
+            case WEST:
+                return new Position(_x - 1, _y);
+            default:
+                throw new IllegalArgumentException("Unknown value of direction");
         }
     }
 

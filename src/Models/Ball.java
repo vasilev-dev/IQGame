@@ -30,8 +30,7 @@ public class Ball extends ColorGameObject {
                 setPosition(nextPosition);
             }
             else {
-                if(nextObject instanceof Goal &&
-                        ((Goal) nextObject).getColor() == getColor())
+                if(isBallColorGoal(nextObject))
                 {
                     destroy();
                 }
@@ -48,5 +47,15 @@ public class Ball extends ColorGameObject {
         _field.destroyGameObject(this);
         setPosition(null);
         setColor(null);
+    }
+
+    /**
+     * GameObject is this ball color goal?
+     * @param gameObject
+     * @return true, if gameObject is this ball color goal
+     */
+    private boolean isBallColorGoal(GameObject gameObject) {
+        return gameObject instanceof Goal &&
+            ((Goal) gameObject).getColor() == getColor();
     }
 }

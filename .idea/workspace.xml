@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="1b67e72b-e6f8-43da-b66d-269d469254a2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Ball.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Ball.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/GameField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/GameField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Models/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Models/Position.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +63,7 @@
       <recent name="C:\Users\Dmitriy\source\repos\IQGame\sprites" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.All in IQGame">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="IQGame" />
@@ -84,6 +87,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in IQGame (3)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IQGame" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="All in IQGame (4)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="IQGame" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="All in IQGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="IQGame" />
       <option name="PACKAGE_NAME" value="" />
@@ -92,42 +111,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="GameFieldTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IQGame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="MAIN_CLASS_NAME" value="Tests.GameFieldTests" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Tests in IQGame" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="IQGame" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Tests.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="Tests" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.All in IQGame" />
+        <item itemvalue="JUnit.All in IQGame (4)" />
+        <item itemvalue="JUnit.All in IQGame (3)" />
         <item itemvalue="JUnit.All in IQGame (2)" />
         <item itemvalue="JUnit.All in IQGame (1)" />
-        <item itemvalue="JUnit.Tests in IQGame" />
-        <item itemvalue="JUnit.All in IQGame" />
-        <item itemvalue="JUnit.GameFieldTests" />
       </list>
     </recent_temporary>
   </component>
@@ -198,61 +188,61 @@
     <state x="348" y="82" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1581973480451" />
     <state x="418" y="99" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585049059602" />
     <state x="523" y="125" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586155831844" />
-    <state width="1860" height="278" key="GridCell.Tab.0.bottom" timestamp="1586417103804">
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom" timestamp="1587480422290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="147" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1581973541226" />
     <state width="1493" height="190" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585154776223" />
-    <state width="1860" height="278" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586417103804" />
-    <state width="1860" height="278" key="GridCell.Tab.0.center" timestamp="1586417103803">
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587480422290" />
+    <state width="1877" height="280" key="GridCell.Tab.0.center" timestamp="1587480422290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="147" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1581973541226" />
     <state width="1493" height="190" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585154776223" />
-    <state width="1860" height="278" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586417103803" />
-    <state width="1860" height="278" key="GridCell.Tab.0.left" timestamp="1586417103803">
+    <state width="1877" height="280" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587480422290" />
+    <state width="1877" height="280" key="GridCell.Tab.0.left" timestamp="1587480422290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="147" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1581973541226" />
     <state width="1493" height="190" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585154776223" />
-    <state width="1860" height="278" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586417103803" />
-    <state width="1860" height="278" key="GridCell.Tab.0.right" timestamp="1586417103804">
+    <state width="1877" height="280" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587480422290" />
+    <state width="1877" height="280" key="GridCell.Tab.0.right" timestamp="1587480422290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1237" height="147" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1581973541226" />
     <state width="1493" height="190" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585154776223" />
-    <state width="1860" height="278" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586417103804" />
-    <state width="1874" height="347" key="GridCell.Tab.1.bottom" timestamp="1586171352152">
+    <state width="1877" height="280" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587480422290" />
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom" timestamp="1587479595240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585087912733" />
-    <state width="1874" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1586171352152" />
-    <state width="1874" height="347" key="GridCell.Tab.1.center" timestamp="1586171352152">
+    <state width="1877" height="347" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587479595240" />
+    <state width="1877" height="347" key="GridCell.Tab.1.center" timestamp="1587479595240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1585087912732" />
-    <state width="1874" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1586171352152" />
-    <state width="1874" height="347" key="GridCell.Tab.1.left" timestamp="1586171352152">
+    <state width="1877" height="347" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587479595240" />
+    <state width="1877" height="347" key="GridCell.Tab.1.left" timestamp="1587479595240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1585087912732" />
-    <state width="1874" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1586171352152" />
-    <state width="1874" height="347" key="GridCell.Tab.1.right" timestamp="1586171352152">
+    <state width="1877" height="347" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587479595240" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right" timestamp="1587479595240">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1585087912733" />
-    <state width="1874" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1586171352152" />
+    <state width="1877" height="347" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587479595240" />
     <state x="182" y="0" key="SettingsEditor" timestamp="1586171074700">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="121" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1581973493236" />
     <state x="182" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1586171074700" />
-    <state x="504" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1586415828836">
+    <state x="504" y="252" key="com.intellij.ide.util.TipDialog" timestamp="1587476795290">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="336" y="165" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1581959716881" />
     <state x="403" y="200" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1585154883754" />
-    <state x="504" y="252" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586415828836" />
+    <state x="504" y="252" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587476795290" />
     <state x="406" y="319" key="com.intellij.jarRepository.RepositoryAttachDialog-DOWNLOAD" timestamp="1586156044424">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -283,6 +273,17 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1585153946124" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/Models/GameField.java</url>
+          <line>71</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/IQGame$All_in_IQGame.ic" NAME="All in IQGame Coverage Results" MODIFIED="1586170343697" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
