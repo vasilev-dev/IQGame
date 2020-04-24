@@ -114,6 +114,30 @@ public class GameField {
         return balls;
     }
 
+    public Collection<Goal> getGoals() {
+        var goals = new ArrayList<Goal>();
+
+        for(var obj : _gameObjects) {
+            if(obj instanceof Goal) {
+                goals.add((Goal) obj);
+            }
+        }
+
+        return goals;
+    }
+
+    public Collection<Wall> getWalls() {
+        var walls = new ArrayList<Wall>();
+
+        for(var obj : _gameObjects) {
+            if(obj instanceof Wall) {
+                walls.add((Wall) obj);
+            }
+        }
+
+        return walls;
+    }
+
     /**
      * Check position on game field size limit
      * @param position checking position

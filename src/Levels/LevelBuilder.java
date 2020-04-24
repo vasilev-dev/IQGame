@@ -6,35 +6,29 @@ import Models.GameField;
  * Create game objects
  */
 public abstract class LevelBuilder {
+    protected GameField _field = new GameField(20, 10);;
+
     /**
      * Create field
      * @return
      */
     public GameField createField() {
-        GameField field = new GameField(20, 10);
-
-        createBalls(field);
-        createWalls(field);
-        createGoals(field);
-
-        return field;
+        createBalls().createWalls().createGoals();
+        return _field;
     }
 
     /**
      * Create walls on field
-     * @param field field
      */
-    protected abstract void createWalls(GameField field);
+    public abstract LevelBuilder createWalls();
 
     /**
      * Create balls on field
-     * @param field field
      */
-    protected abstract void createBalls(GameField field);
+    public abstract LevelBuilder createBalls();
 
     /**
      * Create goals on field
-     * @param field field
      */
-    protected abstract void createGoals(GameField field);
+    public abstract LevelBuilder createGoals();
 }

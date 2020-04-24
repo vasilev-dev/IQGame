@@ -29,15 +29,13 @@ public class LevelDirector {
      * @return level builder
      */
     private static LevelBuilder getBuilder(int level) {
-        LevelBuilder builder = null;
-
-        if(level == 0) {
-            builder = new TestLevel();
+        switch (level) {
+            case 0:
+                return new TestLevel();
+            case 1:
+                return new Level1();
+            default:
+                return null;
         }
-        else if(level == 1) {
-            builder = new Level1();
-        }
-
-        return builder;
     }
 }

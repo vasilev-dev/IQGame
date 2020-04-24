@@ -4,7 +4,7 @@ import Models.Ball;
 import Models.Direction.*;
 import Models.GameField;
 import Models.GameObject;
-import Views.ArrowDrawer;
+import Views.Arrow.ArrowDrawer;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.MouseListener;

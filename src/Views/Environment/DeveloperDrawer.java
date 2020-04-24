@@ -1,5 +1,6 @@
-package Views;
+package Views.Environment;
 
+import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 
@@ -14,11 +15,14 @@ public class DeveloperDrawer {
      * @param isShow confirm
      * @param gameContainer game container
      * @param graphics graphics
+     * @param color grid color
      */
-    public static void drawGrid(boolean isShow, GameContainer gameContainer, Graphics graphics) {
+    public static void drawGrid(boolean isShow, GameContainer gameContainer, Graphics graphics, Color color) {
         if(!isShow) {
             return;
         }
+
+        graphics.setColor(color);
 
         for(int x = 0; x < gameContainer.getWidth(); x += SPRITE_RESOLUTION) {
             for(int y = 0; y < gameContainer.getHeight(); y += SPRITE_RESOLUTION) {
@@ -32,16 +36,19 @@ public class DeveloperDrawer {
      * @param isShow confirm
      * @param gameContainer game container
      * @param graphics graphics
+     * @param color text color
      */
-    public static void drawCellPosition(boolean isShow, GameContainer gameContainer, Graphics graphics) {
+    public static void drawCellPosition(boolean isShow, GameContainer gameContainer, Graphics graphics, Color color) {
         if(!isShow) {
             return;
         }
 
+        graphics.setColor(color);
+
         for(int x = 0; x < gameContainer.getWidth(); x += SPRITE_RESOLUTION) {
             for(int y = 0; y < gameContainer.getHeight(); y += SPRITE_RESOLUTION) {
-                graphics.drawString(Integer.toString(x / SPRITE_RESOLUTION) + ";"
-                        + Integer.toString(y / SPRITE_RESOLUTION), x, y );
+                graphics.drawString(x / SPRITE_RESOLUTION + ";"
+                        + y / SPRITE_RESOLUTION, x, y );
             }
         }
     }

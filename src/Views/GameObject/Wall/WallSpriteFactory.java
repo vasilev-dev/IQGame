@@ -1,6 +1,5 @@
-package Views.Wall;
+package Views.GameObject.Wall;
 
-import Views.SpriteFactory;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 
@@ -33,7 +32,7 @@ public class WallSpriteFactory {
      * @return image of wall
      * @throws SlickException if file of image cannot be opened
      */
-    public static Image getImage() throws SlickException {
+    public static Image getSprite() throws SlickException {
         getInstance();
         return wall;
     }

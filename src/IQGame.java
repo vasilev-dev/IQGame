@@ -1,14 +1,20 @@
 import Controllers.BallController;
 import Levels.LevelDirector;
 import Models.*;
-import Views.ArrowDrawer;
-import Views.DeveloperDrawer;
-import Views.EnvironmentDrawer;
-import Views.GameObjectDrawer;
+import Views.Arrow.ArrowDrawer;
+import Views.Environment.DeveloperDrawer;
+import Views.Environment.Background.BackgroundDrawer;
+import Views.Environment.EndscreenDrawer;
+import Views.GameObject.Ball.BallDrawer;
+import Views.GameObject.Goal.GoalDrawer;
+import Views.GameObject.Wall.WallDrawer;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 
 public class IQGame extends BasicGame {
+    // TODO одинаковый код для синглтонов в GameObject ***Drawer
+    // TODO одинаковый код в GameObject ***Drawer.draw(Collection<***>)
+
     private boolean _showGrid;
     private boolean _showCellPositions;
     private Sound _endGameSound;
@@ -48,19 +54,14 @@ public class IQGame extends BasicGame {
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        graphics.setBackground(Color.white);
-
-        EnvironmentDrawer.drawBackground(gameContainer.getWidth(), gameContainer.getHeight());
-
-        GameObjectDrawer.draw(_field);
-
+        BackgroundDrawer.drawBackground(gameContainer.getWidth(), gameContainer.getHeight());
+        BallDrawer.draw(_field.getBalls());
+        GoalDrawer.draw(_field.getGoals());
+        WallDrawer.draw(_field.getWalls());
         ArrowDrawer.drawArrow();
-
-        graphics.setColor(Color.lightGray);
-        DeveloperDrawer.drawGrid(_showGrid, gameContainer, graphics);
-        graphics.setColor(Color.lightGray);
-        DeveloperDrawer.drawCellPosition(_showCellPositions, gameContainer, graphics);
-        EnvironmentDrawer.drawEndScreen(isPassed());
+        DeveloperDrawer.drawGrid(_showGrid, gameContainer, graphics, Color.lightGray);
+        DeveloperDrawer.drawCellPosition(_showCellPositions, gameContainer, graphics, Color.lightGray);
+        EndscreenDrawer.drawEndScreen(isPassed());
     }
 
     /**

@@ -1,4 +1,4 @@
-package Views;
+package Views.Arrow;
 
 import Models.Direction.*;
 import Models.Position;
@@ -36,16 +36,17 @@ public class ArrowDrawer {
         int x = position.getX() * SPRITE_RESOLUTION;
         int y = position.getY() * SPRITE_RESOLUTION;
 
-        var arrow = SpriteFactory.getArrow();
+        var arrow = ArrowSpriteFactory.getSprite();
 
-        if(direction == DirectionConstant.SOUTH) {
-            arrow.rotate(180);
-        }
-        else if(direction == DirectionConstant.WEST) {
-            arrow.rotate(-90);
-        }
-        else if(direction == DirectionConstant.EAST) {
-            arrow.rotate(90);
+        switch (direction) {
+            case SOUTH:
+                arrow.rotate(180);
+                break;
+            case WEST:
+                arrow.rotate(-90);
+                break;
+            case EAST:
+                arrow.rotate(90);
         }
 
         arrow.draw(x, y);
@@ -59,14 +60,6 @@ public class ArrowDrawer {
     public static void setArrow(Position position, DirectionConstant direction) {
         _arrowPosition = position;
         _arrowDirection = direction;
-    }
-
-    public static Position getArrowPosition() {
-        return _arrowPosition;
-    }
-
-    public static DirectionConstant getArrowDirection() {
-        return _arrowDirection;
     }
 
     /**

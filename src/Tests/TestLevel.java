@@ -5,25 +5,30 @@ import Models.*;
 
 public class TestLevel extends LevelBuilder {
     @Override
-    protected void createWalls(GameField field) {
-        new Wall(new Position(12, 1), field);
+    public LevelBuilder createWalls() {
+        new Wall(new Position(12, 1), _field);
+        return this;
     }
 
     @Override
-    protected void createBalls(GameField field) {
-        new Ball(new Position(6, 4), field, Color.BLUE);
-        new Ball(new Position(8, 4), field, Color.BLUE);
-        new Ball(new Position(10, 4), field, Color.BLUE);
-        new Ball(new Position(12, 4), field, Color.BLUE);
-        new Ball(new Position(14, 4), field, Color.BLUE);
+    public LevelBuilder createBalls() {
+        new Ball(new Position(6, 4), _field, Color.BLUE);
+        new Ball(new Position(8, 4), _field, Color.BLUE);
+        new Ball(new Position(10, 4), _field, Color.BLUE);
+        new Ball(new Position(12, 4), _field, Color.BLUE);
+        new Ball(new Position(14, 4), _field, Color.BLUE);
 
-        new Ball(new Position(10, 1), field, Color.RED);
+        new Ball(new Position(10, 1), _field, Color.RED);
+
+        return this;
     }
 
     @Override
-    protected void createGoals(GameField field) {
-        new Goal(new Position(6, 1), field, Color.BLUE);
-        new Goal(new Position(8, 1), field, Color.RED);
+    public LevelBuilder createGoals() {
+        new Goal(new Position(6, 1), _field, Color.BLUE);
+        new Goal(new Position(8, 1), _field, Color.RED);
+
+        return this;
     }
 
 }
