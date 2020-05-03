@@ -15,8 +15,7 @@ public class IQGame extends BasicGame {
     // TODO одинаковый код для синглтонов в GameObject ***Drawer
     // TODO одинаковый код в GameObject ***Drawer.draw(Collection<***>)
 
-    private boolean _showGrid;
-    private boolean _showCellPositions;
+    private Settings _settings;
     private Sound _endGameSound;
 
     private GameField _field;
@@ -24,15 +23,14 @@ public class IQGame extends BasicGame {
     private Input _input;
     private BallController _ballController;
 
-    public IQGame(boolean showGrid, boolean showCellPositions) throws SlickException {
-        super("IQGame");
-        _showGrid = showGrid;
-        _showCellPositions = showCellPositions;
+    public IQGame(Settings settings) throws SlickException {
+        super(settings.getGameName());
+        _settings = settings;
     }
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        gameContainer.setShowFPS(true);
+        gameContainer.setShowFPS(_settings.showFPS());
 
         _field = LevelDirector.getLevel(0);
 
@@ -59,8 +57,8 @@ public class IQGame extends BasicGame {
         GoalDrawer.draw(_field.getGoals());
         WallDrawer.draw(_field.getWalls());
         ArrowDrawer.drawArrow();
-        DeveloperDrawer.drawGrid(_showGrid, gameContainer, graphics, Color.lightGray);
-        DeveloperDrawer.drawCellPosition(_showCellPositions, gameContainer, graphics, Color.lightGray);
+        DeveloperDrawer.drawGrid(_settings.showGrid(), gameContainer, graphics, Color.lightGray);
+        DeveloperDrawer.drawCellPosition(_settings.showCellPosition(), gameContainer, graphics, Color.lightGray);
         EndscreenDrawer.drawEndScreen(isPassed());
     }
 
