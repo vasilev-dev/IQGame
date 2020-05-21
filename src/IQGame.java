@@ -1,73 +1,65 @@
-import Controllers.BallController;
 import Levels.LevelDirector;
-import Models.*;
-import Views.Arrow.ArrowDrawer;
-import Views.Environment.DeveloperDrawer;
-import Views.Environment.Background.BackgroundDrawer;
-import Views.Environment.EndscreenDrawer;
-import Views.GameObject.Ball.BallDrawer;
-import Views.GameObject.Goal.GoalDrawer;
-import Views.GameObject.Wall.WallDrawer;
+import Models.GameField;
+import Views.Widgets.Drawable;
+import Views.Widgets.EnvironmentWidgets.BackgroundWidget;
+import Views.Widgets.DeveloperWidgets.CellPositionWidget;
+import Views.Widgets.DeveloperWidgets.GridWidget;
+import Views.Widgets.EnvironmentWidgets.EndscreenWidget;
+import Views.Widgets.GameObjectWidgets.GameFieldWidget;
+import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.*;
 import org.newdawn.slick.Color;
 
+import java.util.LinkedList;
+
 public class IQGame extends BasicGame {
-    // TODO одинаковый код для синглтонов в GameObject ***Drawer
-    // TODO одинаковый код в GameObject ***Drawer.draw(Collection<***>)
+    private @NotNull Settings settings;
+    private LinkedList<Drawable> widgets = new LinkedList<>();
+    private LevelDirector levelDirector = new LevelDirector();
+    private GameFieldWidget gameFieldWidget;
+    private boolean gameIsPassed = false;
 
-    private Settings _settings;
-    private Sound _endGameSound;
-
-    private GameField _field;
-
-    private Input _input;
-    private BallController _ballController;
-
-    public IQGame(Settings settings) throws SlickException {
+    public IQGame(@NotNull Settings settings) throws SlickException {
         super(settings.getGameName());
-        _settings = settings;
+        this.settings = settings;
     }
 
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
-        gameContainer.setShowFPS(_settings.showFPS());
+        gameContainer.setShowFPS(settings.showFPS());
+        gameFieldWidget = new GameFieldWidget(levelDirector.getCurrentLevel(), gameContainer.getInput());
+        initializeWidgets(gameContainer);
+    }
 
-        _field = LevelDirector.getLevel(0);
-
-        _ballController = new BallController(_field);
-
-        _input = gameContainer.getInput();
-        _input.addMouseListener(_ballController);
-
-        _endGameSound = new Sound("files/sounds/endgame.wav");
+    private void initializeWidgets(GameContainer gameContainer) throws SlickException {
+        widgets.add(new BackgroundWidget(gameContainer.getWidth(), gameContainer.getHeight()));
+        if(settings.showGrid()) widgets.add(new GridWidget(gameContainer, Color.lightGray));
+        if(settings.showCellPosition()) widgets.add(new CellPositionWidget(gameContainer, Color.lightGray));
     }
 
     @Override
     public void update(GameContainer gameContainer, int i) throws SlickException {
-        // play sound if game is passed
-        if(isPassed() && !_endGameSound.playing()) {
-            _endGameSound.play(1, 0.3f);
+        if(!gameIsPassed && levelDirector.currentLevelIsPassed()) {
+            var nextLevel = levelDirector.nextLevel();
+            if(nextLevel != null) {
+                gameFieldWidget = new GameFieldWidget(nextLevel, gameContainer.getInput());
+            }
+            else {
+                gameIsPassed = true;
+            }
         }
     }
 
     @Override
     public void render(GameContainer gameContainer, Graphics graphics) throws SlickException {
-        BackgroundDrawer.drawBackground(gameContainer.getWidth(), gameContainer.getHeight());
-        BallDrawer.draw(_field.getBalls());
-        GoalDrawer.draw(_field.getGoals());
-        WallDrawer.draw(_field.getWalls());
-        ArrowDrawer.drawArrow();
-        DeveloperDrawer.drawGrid(_settings.showGrid(), gameContainer, graphics, Color.lightGray);
-        DeveloperDrawer.drawCellPosition(_settings.showCellPosition(), gameContainer, graphics, Color.lightGray);
-        EndscreenDrawer.drawEndScreen(isPassed());
+        if(!gameIsPassed) {
+            for (var widget : widgets) {
+                widget.draw();
+            }
+            gameFieldWidget.draw();
+        }
+        else {
+            new EndscreenWidget().draw();
+        }
     }
-
-    /**
-     * Game is passed ?
-     * @return true, if all balls are gone
-     */
-    private boolean isPassed() {
-        return _field.getBalls().isEmpty();
-    }
-
 }

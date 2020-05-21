@@ -6,14 +6,14 @@ import org.newdawn.slick.SlickException;
  * Game object
  */
 public abstract class GameObject {
-    private Position _position;
-    protected GameField _field;
+    private Position position;
+    protected GameField field;
 
     public GameObject(Position position, GameField field) {
         if(field.isFreePosition(position)) {
-            _field = field;
+            this.field = field;
             setPosition(position);
-            _field.addGameObject(this);
+            field.addGameObject(this);
         }
         else {
             throw new IllegalArgumentException("Game object with position " + position.toString() +  " already exists!");
@@ -21,22 +21,26 @@ public abstract class GameObject {
     }
 
     public Position getPosition() {
-        return _position;
+        return position;
     }
 
     protected boolean setPosition(Position position) {
         if(position == null) {
-            _position = null;
+            this.position = null;
 
             return true;
         }
 
-        if(_field.hasPosition(position) && _field.isFreePosition(position)) {
-            _position = position;
+        if(field.hasPosition(position) && field.isFreePosition(position)) {
+            this.position = position;
 
             return true;
         }
 
         return false;
+    }
+
+    public GameField getGameField() {
+        return field;
     }
 }

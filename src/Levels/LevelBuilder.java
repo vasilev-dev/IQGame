@@ -6,7 +6,7 @@ import Models.GameField;
  * Create game objects
  */
 public abstract class LevelBuilder {
-    protected GameField _field = new GameField(20, 10);;
+    protected GameField field = new GameField(20, 10);;
 
     /**
      * Create field
@@ -14,7 +14,7 @@ public abstract class LevelBuilder {
      */
     public GameField createField() {
         createBalls().createWalls().createGoals();
-        return _field;
+        return field;
     }
 
     /**

@@ -4,18 +4,18 @@ package Models;
  * Color game object
  */
 public abstract class ColorGameObject extends GameObject {
-    private Color _color;
+    private Color color;
 
     public ColorGameObject(Position position, GameField field, Color color) {
         super(position, field);
-        _color = color;
+        this.color = color;
     }
 
     public Color getColor() {
-        return _color;
+        return color;
     }
 
     public void setColor(Color _color) {
-        this._color = _color;
+        this.color = _color;
     }
 }

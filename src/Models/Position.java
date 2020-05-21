@@ -6,11 +6,11 @@ import java.util.Objects;
  * Position of game object on field
  */
 public class Position {
-    private int _x, _y;
+    private int x, y;
 
     public Position(int x, int y) {
-        _x = x;
-        _y = y;
+        this.x = x;
+        this.y = y;
     }
 
     /**
@@ -20,16 +20,16 @@ public class Position {
      */
     public Position next(Direction.DirectionConstant direction) {
         if(direction == Direction.DirectionConstant.NORTH) {
-            return new Position(_x, _y - 1);
+            return new Position(x, y - 1);
         }
         else if(direction == Direction.DirectionConstant.SOUTH) {
-            return new Position(_x, _y + 1);
+            return new Position(x, y + 1);
         }
         else if(direction == Direction.DirectionConstant.WEST) {
-            return new Position(_x - 1, _y);
+            return new Position(x - 1, y);
         }
         else {
-            return new Position(_x + 1, _y);
+            return new Position(x + 1, y);
         }
     }
 
@@ -38,25 +38,25 @@ public class Position {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
-        return _x == position._x &&
-                _y == position._y;
+        return x == position.x &&
+                y == position.y;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(_x, _y);
+        return Objects.hash(x, y);
     }
 
     public int getX() {
-        return _x;
+        return x;
     }
 
     public int getY() {
-        return _y;
+        return y;
     }
 
     @Override
     public String toString() {
-        return "(" + Integer.toString(_x) + ";" + Integer.toString(_y) + ")";
+        return "(" + Integer.toString(x) + ";" + Integer.toString(y) + ")";
     }
 }

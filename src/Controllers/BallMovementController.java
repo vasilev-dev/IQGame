@@ -4,7 +4,8 @@ import Models.Ball;
 import Models.Direction.*;
 import Models.GameField;
 import Models.GameObject;
-import Views.Arrow.ArrowDrawer;
+import Views.GameObjectView;
+import Views.Widgets.EnvironmentWidgets.ArrowWidget;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.MouseListener;
@@ -15,14 +16,16 @@ import static Models.Direction.getDirection;
  * Controller of moving of ball
  * Pipeline: mousePressed -> mouseDragged -> mouseReleased
  */
-public class BallController implements MouseListener {
-    private Ball _ball;
-    private GameField _field;
-    private int oldx, oldy; // UI coordinates of user's selected ball
-    private DirectionConstant _lastDirection; // last direction of user's selected
+public class BallMovementController implements MouseListener {
+    private GameField field;
 
-    public BallController(GameField field) {
-        _field = field;
+    private Ball ball;
+    private int oldx, oldy; // UI coordinates of user's selected ball
+    private DirectionConstant lastDirection; // last direction of user's selected
+    private ArrowWidget arrowWidget;
+
+    public BallMovementController(GameField field) {
+        this.field = field;
     }
 
     /**
@@ -40,12 +43,14 @@ public class BallController implements MouseListener {
         oldx = i1;
         oldy = i2;
 
-        GameObject clickedObject = GameObjectController.getObjectByUI(i1, i2, _field);
+        GameObject clickedObject = GameObjectView.getObjectByView(i1, i2, field);
 
         if(clickedObject instanceof Ball) {
-            _ball = (Ball) clickedObject;
+            ball = (Ball) clickedObject;
             oldx = i1;
             oldy = i2;
+
+            arrowWidget = new ArrowWidget(ball.getPosition());
         }
     }
 
@@ -58,19 +63,22 @@ public class BallController implements MouseListener {
      */
     @Override
     public void mouseDragged(int i, int i1, int i2, int i3) {
-        if(_ball != null) {
+        if(ball != null) {
             // calc direction
             Vector2f start = new Vector2f(oldx, oldy);
             Vector2f dragged = new Vector2f(i2, i3);
 
             double angle = Math.atan2(-(dragged.y - start.y), dragged.x - start.x) * 180 / Math.PI;
-            _lastDirection = getDirection(angle);
+            lastDirection = getDirection(angle);
 
-            // draw arrow by selected user's direction
-            ArrowDrawer.setArrow(_ball.getPosition(), _lastDirection);
+            // set arrow direction by selected user's direction; render is done IGame.render()
+            arrowWidget.setDirection(lastDirection);
         }
     }
 
+    public ArrowWidget getArrowWidget() {
+        return arrowWidget;
+    }
 
     /**
      * User move ball
@@ -80,11 +88,12 @@ public class BallController implements MouseListener {
      */
     @Override
     public void mouseReleased(int i, int i1, int i2) {
-        if(_ball != null) {
+        if(ball != null) {
 
-            _ball.move(_lastDirection);
-            _ball = null;
-            ArrowDrawer.destroy();
+            ball.move(lastDirection);
+            ball = null;
+            arrowWidget.destroy();
+            arrowWidget = null;
         }
     }
 

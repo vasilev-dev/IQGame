@@ -1,5 +1,6 @@
 package Tests;
 
+import Levels.LevelTest;
 import Models.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,7 +11,7 @@ class BallTests {
 
     @BeforeEach
     public void setUp() {
-        testLevel = new TestLevel().createField();
+        testLevel = new LevelTest().createField();
     }
 
     @Test

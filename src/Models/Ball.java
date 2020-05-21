@@ -20,11 +20,11 @@ public class Ball extends ColorGameObject {
         while (true) {
             nextPosition = getPosition().next(direction);
 
-            if(!_field.hasPosition(nextPosition)) {
+            if(!field.hasPosition(nextPosition)) {
                 return;
             }
 
-            nextObject = _field.getGameObject(nextPosition);
+            nextObject = field.getGameObject(nextPosition);
 
             if(nextObject == null) {
                 setPosition(nextPosition);
@@ -45,7 +45,8 @@ public class Ball extends ColorGameObject {
      * Destroy ball
      */
     public void destroy() {
-        _field.destroyGameObject(this);
+        field.destroyGameObject(this);
+        field = null;
         setPosition(null);
         setColor(null);
     }

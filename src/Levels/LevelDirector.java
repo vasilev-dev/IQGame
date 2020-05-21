@@ -2,40 +2,30 @@ package Levels;
 
 import Models.GameField;
 
+import java.util.ArrayList;
+
 /**
  * Guides the creations of levels
  */
 public class LevelDirector {
+    private ArrayList<GameField> levels = new ArrayList<>();
+    private int currentLevel = 0;
 
-    /**
-     * Get level
-     * @param level level number
-     * @return field by input level number
-     */
-    public static GameField getLevel(int level) {
-        LevelBuilder builder = getBuilder(level);
-
-        if(builder == null) {
-            throw new UnsupportedOperationException("Requested level is not implemented!");
-        }
-        else {
-            return builder.createField();
-        }
+    public LevelDirector() {
+        levels.add(new Level1().createField());
+        levels.add(new Level2().createField());
     }
 
-    /**
-     * Get builder for creating of level
-     * @param level level number
-     * @return level builder
-     */
-    private static LevelBuilder getBuilder(int level) {
-        switch (level) {
-            case 0:
-                return new TestLevel();
-            case 1:
-                return new Level1();
-            default:
-                return null;
-        }
+    public GameField nextLevel() {
+        currentLevel++;
+        return levels.size() > currentLevel ? levels.get(currentLevel) : null;
+    }
+
+    public GameField getCurrentLevel() {
+        return levels.get(currentLevel);
+    }
+
+    public boolean currentLevelIsPassed() {
+        return getCurrentLevel().getBalls().isEmpty();
     }
 }

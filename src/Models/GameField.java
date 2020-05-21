@@ -7,15 +7,15 @@ import java.util.Collection;
  * Game field
  */
 public class GameField {
-    private int _width, _height;
-    private Collection<GameObject> _gameObjects;
+    private int width, height;
+    private Collection<GameObject> gameObjects;
 
     public GameField(int width, int height) {
         validateGameFieldSize(width, height);
-        _width = width;
-        _height = height;
+        this.width = width;
+        this.height = height;
 
-        _gameObjects = new ArrayList<>();
+        gameObjects = new ArrayList<>();
     }
 
     /**
@@ -44,7 +44,7 @@ public class GameField {
             throw new IllegalArgumentException("You try to get game object in off-field position " + position.toString());
         }
 
-        for(GameObject obj : _gameObjects) {
+        for(GameObject obj : gameObjects) {
             if(obj.getPosition().equals(position)) {
                 return obj;
             }
@@ -73,11 +73,11 @@ public class GameField {
             throw new NullPointerException("You are trying to add an nullable GameObject to collection!");
         }
 
-        if(_gameObjects.contains(obj)) {
+        if(gameObjects.contains(obj)) {
             throw new IllegalArgumentException("Collection of game objects already contains this object!");
         }
 
-        _gameObjects.add(obj);
+        gameObjects.add(obj);
     }
 
     /**
@@ -91,21 +91,21 @@ public class GameField {
             throw new NullPointerException("You are trying to destroy an nullable GameObject!");
         }
 
-        if(!_gameObjects.contains(obj)) {
+        if(!gameObjects.contains(obj)) {
             throw new IllegalArgumentException("Collection of game objects don't contains this object!");
         }
 
-        _gameObjects.remove(obj);
+        gameObjects.remove(obj);
     }
 
     public Collection<GameObject> getGameObjects() {
-        return _gameObjects;
+        return gameObjects;
     }
 
     public Collection<Ball> getBalls() {
         var balls = new ArrayList<Ball>();
 
-        for(var obj : _gameObjects) {
+        for(var obj : gameObjects) {
             if(obj instanceof Ball) {
                 balls.add((Ball) obj);
             }
@@ -117,7 +117,7 @@ public class GameField {
     public Collection<Goal> getGoals() {
         var goals = new ArrayList<Goal>();
 
-        for(var obj : _gameObjects) {
+        for(var obj : gameObjects) {
             if(obj instanceof Goal) {
                 goals.add((Goal) obj);
             }
@@ -129,7 +129,7 @@ public class GameField {
     public Collection<Wall> getWalls() {
         var walls = new ArrayList<Wall>();
 
-        for(var obj : _gameObjects) {
+        for(var obj : gameObjects) {
             if(obj instanceof Wall) {
                 walls.add((Wall) obj);
             }
@@ -144,7 +144,7 @@ public class GameField {
      * @return false if position is outside the game field
      */
     public boolean hasPosition(Position position) {
-        return position.getX() < _width && position.getY() < _height &&
+        return position.getX() < width && position.getY() < height &&
                 position.getX() >= 0 && position.getY() >= 0;
     }
 }
