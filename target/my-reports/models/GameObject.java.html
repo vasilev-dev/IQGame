@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameObject.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IQGame</a> &gt; <a href="index.source.html" class="el_package">models</a> &gt; <span class="el_source">GameObject.java</span></div><h1>GameObject.java</h1><pre class="source lang-java linenums">package models;
+
+/**
+ * Game object
+ */
+public abstract class GameObject {
+    private Position position;
+    protected GameField field;
+
+<span class="fc" id="L10">    public GameObject(Position position, GameField field) {</span>
+<span class="fc bfc" id="L11" title="All 2 branches covered.">        if(field.isFreePosition(position)) {</span>
+<span class="fc" id="L12">            this.field = field;</span>
+<span class="fc" id="L13">            setPosition(position);</span>
+<span class="fc" id="L14">            field.addGameObject(this);</span>
+        }
+        else {
+<span class="fc" id="L17">            throw new IllegalArgumentException(&quot;Game object with position &quot; + position.toString() +  &quot; already exists!&quot;);</span>
+        }
+<span class="fc" id="L19">    }</span>
+
+    public Position getPosition() {
+<span class="fc" id="L22">        return position;</span>
+    }
+
+    protected boolean setPosition(Position position) {
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if(position == null) {</span>
+<span class="fc" id="L27">            this.position = null;</span>
+
+<span class="fc" id="L29">            return true;</span>
+        }
+
+<span class="pc bpc" id="L32" title="2 of 4 branches missed.">        if(field.hasPosition(position) &amp;&amp; field.isFreePosition(position)) {</span>
+<span class="fc" id="L33">            this.position = position;</span>
+
+<span class="fc" id="L35">            return true;</span>
+        }
+
+<span class="nc" id="L38">        return false;</span>
+    }
+
+    public GameField getGameField() {
+<span class="nc" id="L42">        return field;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

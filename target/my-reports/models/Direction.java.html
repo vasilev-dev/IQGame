@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Direction.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IQGame</a> &gt; <a href="index.source.html" class="el_package">models</a> &gt; <span class="el_source">Direction.java</span></div><h1>Direction.java</h1><pre class="source lang-java linenums">package models;
+
+/**
+ * Direction
+ */
+<span class="nc" id="L6">public class Direction {</span>
+<span class="fc" id="L7">    public enum DirectionConstant {</span>
+<span class="fc" id="L8">        NORTH,</span>
+<span class="fc" id="L9">        SOUTH,</span>
+<span class="fc" id="L10">        WEST,</span>
+<span class="fc" id="L11">        EAST</span>
+    }
+
+    /**
+     * Get direction by angle
+     * NORTH = (45; 135]
+     * WEST = (135; 180] &amp; [-180; -135]
+     * SOUTH = (-135; -45]
+     * NORTH = (-45; 45]
+     * I fourth = [0; 90]
+     * II fourth = [90; 180]
+     * III fourth = [-180; -90]
+     * IV fourth = [-90; 0]
+     * @param angle angle
+     * @return direction
+     * @exception IllegalArgumentException if angle is in wrong range
+     */
+    public static DirectionConstant getDirection(double angle) {
+<span class="fc bfc" id="L29" title="All 4 branches covered.">        if(angle &gt; 45 &amp;&amp; angle &lt;= 135) {</span>
+<span class="fc" id="L30">            return DirectionConstant.NORTH;</span>
+        }
+<span class="pc bpc" id="L32" title="2 of 8 branches missed.">        else if((angle &gt; 135 &amp;&amp; angle &lt;= 180) || (angle &gt;= -180 &amp;&amp; angle &lt;= -135)) {</span>
+<span class="fc" id="L33">            return DirectionConstant.WEST;</span>
+        }
+<span class="pc bpc" id="L35" title="1 of 4 branches missed.">        else if(angle &gt; -135 &amp;&amp; angle &lt;= -45) {</span>
+<span class="fc" id="L36">            return DirectionConstant.SOUTH;</span>
+        }
+<span class="pc bpc" id="L38" title="1 of 4 branches missed.">        else if(angle &gt; -45 &amp;&amp; angle &lt;= 45)</span>
+        {
+<span class="fc" id="L40">            return DirectionConstant.EAST;</span>
+        }
+        else {
+<span class="fc" id="L43">            throw new IllegalArgumentException(&quot;Incorrect angle(&quot;+ angle + &quot;), see getDirection method's description!&quot;);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LevelTest.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IQGame</a> &gt; <a href="index.source.html" class="el_package">levels</a> &gt; <span class="el_source">LevelTest.java</span></div><h1>LevelTest.java</h1><pre class="source lang-java linenums">package levels;
+
+import models.*;
+
+<span class="fc" id="L5">public class LevelTest extends LevelBuilder {</span>
+    @Override
+    public LevelBuilder createWalls() {
+<span class="fc" id="L8">        new Wall(new Position(12, 1), field);</span>
+<span class="fc" id="L9">        return this;</span>
+    }
+
+    @Override
+    public LevelBuilder createBalls() {
+<span class="fc" id="L14">        new Ball(new Position(6, 4), field, Color.BLUE);</span>
+<span class="fc" id="L15">        new Ball(new Position(8, 4), field, Color.BLUE);</span>
+<span class="fc" id="L16">        new Ball(new Position(10, 4), field, Color.BLUE);</span>
+<span class="fc" id="L17">        new Ball(new Position(12, 4), field, Color.BLUE);</span>
+<span class="fc" id="L18">        new Ball(new Position(14, 4), field, Color.BLUE);</span>
+
+<span class="fc" id="L20">        new Ball(new Position(10, 1), field, Color.RED);</span>
+
+<span class="fc" id="L22">        return this;</span>
+    }
+
+    @Override
+    public LevelBuilder createGoals() {
+<span class="fc" id="L27">        new Goal(new Position(6, 1), field, Color.BLUE);</span>
+<span class="fc" id="L28">        new Goal(new Position(8, 1), field, Color.RED);</span>
+
+<span class="fc" id="L30">        return this;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
