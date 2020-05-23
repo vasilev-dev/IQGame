@@ -1,11 +1,11 @@
-package views.Widgets.EnvironmentWidgets;
+package views.widgets.environment;
 
-import views.Widgets.Drawable;
-import views.Widgets.HasRenderableAsset;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
+import views.widgets.Drawable;
+import views.widgets.HasRenderableAsset;
 
 import static views.AssetSettings.BACKGROUND_FOLDER;
 import static views.AssetSettings.SPRITE_RESOLUTION;

@@ -1,11 +1,11 @@
-package views.Widgets.GameObjectWidgets;
+package views.widgets.gameobject;
 
 import controllers.BallMovementController;
 import models.*;
-import views.Widgets.Drawable;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
+import views.widgets.Drawable;
 
 import java.util.ArrayList;
 import java.util.Collection;

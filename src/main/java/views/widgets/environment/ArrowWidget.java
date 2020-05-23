@@ -1,13 +1,13 @@
-package views.Widgets.EnvironmentWidgets;
+package views.widgets.environment;
 
 import models.Direction;
 import models.Position;
 import views.AssetSettings;
-import views.Widgets.Drawable;
-import views.Widgets.HasRenderableAsset;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.SlickException;
+import views.widgets.Drawable;
+import views.widgets.HasRenderableAsset;
 
 import static views.AssetSettings.SPRITE_RESOLUTION;
 

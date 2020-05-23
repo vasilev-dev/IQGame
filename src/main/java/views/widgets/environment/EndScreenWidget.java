@@ -1,16 +1,16 @@
-package views.Widgets.EnvironmentWidgets;
+package views.widgets.environment;
 
 import views.AssetSettings;
-import views.Widgets.Drawable;
-import views.Widgets.HasRenderableAsset;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.SlickException;
+import views.widgets.Drawable;
+import views.widgets.HasRenderableAsset;
 
-public class EndscreenWidget implements Drawable, HasRenderableAsset {
+public class EndScreenWidget implements Drawable, HasRenderableAsset {
     private Image asset;
 
-    public EndscreenWidget() throws SlickException {
+    public EndScreenWidget() throws SlickException {
         asset = (Image) getAsset();
     }
 

@@ -1,10 +1,11 @@
-package views.Widgets.GameObjectWidgets;
+package views.widgets.gameobject;
 
 import models.GameObject;
-import views.Widgets.Drawable;
-import views.Widgets.HasRenderableAsset;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.SlickException;
+import views.widgets.Drawable;
+import views.widgets.HasRenderableAsset;
+
 import static views.AssetSettings.SPRITE_RESOLUTION;
 
 public abstract class GameObjectWidget implements Drawable, HasRenderableAsset {

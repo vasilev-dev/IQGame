@@ -1,4 +1,4 @@
-package views.Widgets.GameObjectWidgets;
+package views.widgets.gameobject;
 
 import models.Ball;
 import models.Color;

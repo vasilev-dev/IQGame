@@ -1,8 +1,8 @@
-package views.Widgets.DeveloperWidgets;
+package views.widgets.developer;
 
-import views.Widgets.Drawable;
 import org.newdawn.slick.Color;
 import org.newdawn.slick.GameContainer;
+import views.widgets.Drawable;
 
 import static views.AssetSettings.SPRITE_RESOLUTION;
 

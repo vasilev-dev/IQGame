@@ -5,10 +5,10 @@ import models.Direction.*;
 import models.GameField;
 import models.GameObject;
 import views.GameObjectView;
-import views.Widgets.EnvironmentWidgets.ArrowWidget;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.MouseListener;
+import views.widgets.environment.ArrowWidget;
 
 import static models.Direction.getDirection;
 
