@@ -29,13 +29,11 @@ public class Ball extends ColorGameObject {
             if(nextObject == null) {
                 setPosition(nextPosition);
             }
+            else if(isBallColorGoal(nextObject)) {
+                destroy();
+                return;
+            }
             else {
-                if(nextObject instanceof Goal &&
-                        ((Goal) nextObject).getColor() == getColor())
-                {
-                    destroy();
-                }
-
                 return;
             }
         }
@@ -49,5 +47,9 @@ public class Ball extends ColorGameObject {
         field = null;
         setPosition(null);
         setColor(null);
+    }
+
+    protected boolean isBallColorGoal(GameObject object) {
+        return object instanceof Goal && ((Goal) object).getColor() == getColor();
     }
 }

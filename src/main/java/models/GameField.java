@@ -147,4 +147,12 @@ public class GameField {
         return position.getX() < width && position.getY() < height &&
                 position.getX() >= 0 && position.getY() >= 0;
     }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 }
