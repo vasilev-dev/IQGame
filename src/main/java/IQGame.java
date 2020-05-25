@@ -18,7 +18,7 @@ public class IQGame extends BasicGame {
     private GameFieldWidget gameFieldWidget;
     private boolean gameIsPassed = false;
 
-    public IQGame(@NotNull Settings settings) throws SlickException {
+        public IQGame(@NotNull Settings settings) throws SlickException {
         super(settings.getGameName());
         this.settings = settings;
     }
@@ -26,11 +26,11 @@ public class IQGame extends BasicGame {
     @Override
     public void init(GameContainer gameContainer) throws SlickException {
         gameContainer.setShowFPS(settings.showFPS());
-        gameFieldWidget = new GameFieldWidget(levelDirector.getCurrentLevel(), gameContainer.getInput());
         initializeWidgets(gameContainer);
     }
 
     private void initializeWidgets(GameContainer gameContainer) throws SlickException {
+        gameFieldWidget = new GameFieldWidget(levelDirector.getCurrentLevel(), gameContainer.getInput());
         widgets.add(new BackgroundWidget(gameContainer.getWidth(), gameContainer.getHeight()));
         if(settings.showGrid()) widgets.add(new GridWidget(gameContainer, Color.lightGray));
         if(settings.showCellPosition()) widgets.add(new CellPositionWidget(gameContainer, Color.lightGray));
@@ -46,7 +46,7 @@ public class IQGame extends BasicGame {
             else {
                 gameIsPassed = true;
             }
-        }
+        }   
     }
 
     @Override

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>GameField.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IQGame</a> &gt; <a href="index.source.html" class="el_package">models</a> &gt; <span class="el_source">GameField.java</span></div><h1>GameField.java</h1><pre class="source lang-java linenums">package models;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
+/**
+ * Game field
+ */
+public class GameField {
+    private int width, height;
+    private Collection&lt;GameObject&gt; gameObjects;
+
+<span class="fc" id="L13">    public GameField(int width, int height) {</span>
+<span class="fc" id="L14">        validateGameFieldSize(width, height);</span>
+<span class="fc" id="L15">        this.width = width;</span>
+<span class="fc" id="L16">        this.height = height;</span>
+
+<span class="fc" id="L18">        gameObjects = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L19">    }</span>
+
+    /**
+     * Validate width and height of game field
+     * @param width width of game field
+     * @param height height of game field
+     * @exception IllegalArgumentException if width or(and) height is negative
+     */
+    private void validateGameFieldSize(int width, int height) {
+<span class="pc bpc" id="L28" title="2 of 4 branches missed.">        if(width &lt; 0 || height &lt; 0) {</span>
+<span class="nc" id="L29">            throw new IllegalArgumentException(&quot;Negative size of game field!&quot;);</span>
+        }
+<span class="fc" id="L31">    }</span>
+
+    /**
+     * Get game object with input position
+     * @param position position object
+     * @return game object with input position or null if game object with input position is not exists
+     */
+    public GameObject getGameObject(Position position) {
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if(position == null) {</span>
+<span class="fc" id="L40">            throw new NullPointerException(&quot;You try to get game object in nullable position&quot;);</span>
+        }
+
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if(!hasPosition(position)) {</span>
+<span class="fc" id="L44">            throw new IllegalArgumentException(&quot;You try to get game object in off-field position &quot; + position.toString());</span>
+        }
+
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        for(GameObject obj : gameObjects) {</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">            if(obj.getPosition().equals(position)) {</span>
+<span class="fc" id="L49">                return obj;</span>
+            }
+<span class="fc" id="L51">        }</span>
+
+<span class="fc" id="L53">        return null;</span>
+    }
+
+    /**
+     * Is it free position?
+     * @param position position
+     * @return true if position is free
+     */
+    public boolean isFreePosition(Position position) {
+<span class="fc bfc" id="L62" title="All 2 branches covered.">        return getGameObject(position) == null;</span>
+    }
+
+    /**
+     * Add new game object to collection of game objects
+     * @param obj new game object
+     * @exception NullPointerException if input game object is null
+     * @exception IllegalArgumentException if collection already contains input object
+     */
+    public void addGameObject(GameObject obj) {
+<span class="fc bfc" id="L72" title="All 2 branches covered.">        if(obj == null) {</span>
+<span class="fc" id="L73">            throw new NullPointerException(&quot;You are trying to add an nullable GameObject to collection!&quot;);</span>
+        }
+
+<span class="pc bpc" id="L76" title="1 of 2 branches missed.">        if(gameObjects.contains(obj)) {</span>
+<span class="nc" id="L77">            throw new IllegalArgumentException(&quot;Collection of game objects already contains this object!&quot;);</span>
+        }
+
+<span class="fc" id="L80">        gameObjects.add(obj);</span>
+<span class="fc" id="L81">    }</span>
+
+    /**
+     * Remove object from collection
+     * @param obj removing object
+     * @exception NullPointerException if input game object is null
+     * @exception IllegalArgumentException if collection don't contains input object
+     */
+    public void destroyGameObject(GameObject obj) {
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if(obj == null) {</span>
+<span class="fc" id="L91">            throw new NullPointerException(&quot;You are trying to destroy an nullable GameObject!&quot;);</span>
+        }
+
+<span class="fc bfc" id="L94" title="All 2 branches covered.">        if(!gameObjects.contains(obj)) {</span>
+<span class="fc" id="L95">            throw new IllegalArgumentException(&quot;Collection of game objects don't contains this object!&quot;);</span>
+        }
+
+<span class="fc" id="L98">        gameObjects.remove(obj);</span>
+<span class="fc" id="L99">    }</span>
+
+    public Collection&lt;GameObject&gt; getGameObjects() {
+<span class="nc" id="L102">        return gameObjects;</span>
+    }
+
+    public Collection&lt;Ball&gt; getBalls() {
+<span class="nc" id="L106">        var balls = new ArrayList&lt;Ball&gt;();</span>
+
+<span class="nc bnc" id="L108" title="All 2 branches missed.">        for(var obj : gameObjects) {</span>
+<span class="nc bnc" id="L109" title="All 2 branches missed.">            if(obj instanceof Ball) {</span>
+<span class="nc" id="L110">                balls.add((Ball) obj);</span>
+            }
+<span class="nc" id="L112">        }</span>
+
+<span class="nc" id="L114">        return balls;</span>
+    }
+
+    public Collection&lt;Goal&gt; getGoals() {
+<span class="nc" id="L118">        var goals = new ArrayList&lt;Goal&gt;();</span>
+
+<span class="nc bnc" id="L120" title="All 2 branches missed.">        for(var obj : gameObjects) {</span>
+<span class="nc bnc" id="L121" title="All 2 branches missed.">            if(obj instanceof Goal) {</span>
+<span class="nc" id="L122">                goals.add((Goal) obj);</span>
+            }
+<span class="nc" id="L124">        }</span>
+
+<span class="nc" id="L126">        return goals;</span>
+    }
+
+    public Collection&lt;Wall&gt; getWalls() {
+<span class="nc" id="L130">        var walls = new ArrayList&lt;Wall&gt;();</span>
+
+<span class="nc bnc" id="L132" title="All 2 branches missed.">        for(var obj : gameObjects) {</span>
+<span class="nc bnc" id="L133" title="All 2 branches missed.">            if(obj instanceof Wall) {</span>
+<span class="nc" id="L134">                walls.add((Wall) obj);</span>
+            }
+<span class="nc" id="L136">        }</span>
+
+<span class="nc" id="L138">        return walls;</span>
+    }
+
+    /**
+     * Check position on game field size limit
+     * @param position checking position
+     * @return false if position is outside the game field
+     */
+    public boolean hasPosition(Position position) {
+<span class="pc bpc" id="L147" title="1 of 4 branches missed.">        return position.getX() &lt; width &amp;&amp; position.getY() &lt; height &amp;&amp;</span>
+<span class="fc bfc" id="L148" title="All 4 branches covered.">                position.getX() &gt;= 0 &amp;&amp; position.getY() &gt;= 0;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

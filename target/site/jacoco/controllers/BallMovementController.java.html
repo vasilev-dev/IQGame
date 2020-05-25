@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BallMovementController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IQGame</a> &gt; <a href="index.source.html" class="el_package">controllers</a> &gt; <span class="el_source">BallMovementController.java</span></div><h1>BallMovementController.java</h1><pre class="source lang-java linenums">package controllers;
+
+import models.Ball;
+import models.Direction.*;
+import models.GameField;
+import models.GameObject;
+import views.GameObjectView;
+import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.Input;
+import org.newdawn.slick.MouseListener;
+import views.widgets.environment.ArrowWidget;
+
+import static models.Direction.getDirection;
+
+/**
+ * Controller of moving of ball
+ * Pipeline: mousePressed -&gt; mouseDragged -&gt; mouseReleased
+ */
+public class BallMovementController implements MouseListener {
+    private GameField field;
+
+    private Ball ball;
+    private int oldx, oldy; // UI coordinates of user's selected ball
+    private DirectionConstant lastDirection; // last direction of user's selected
+    private ArrowWidget arrowWidget;
+
+<span class="nc" id="L27">    public BallMovementController(GameField field) {</span>
+<span class="nc" id="L28">        this.field = field;</span>
+<span class="nc" id="L29">    }</span>
+
+    /**
+     * User select ball
+     * @param i mouse button
+     * @param i1 UI x
+     * @param i2 UI y
+     */
+    @Override
+    public void mousePressed(int i, int i1, int i2) {
+<span class="nc bnc" id="L39" title="All 2 branches missed.">        if(i != (int)Input.MOUSE_LEFT_BUTTON) {</span>
+<span class="nc" id="L40">            return;</span>
+        }
+
+<span class="nc" id="L43">        oldx = i1;</span>
+<span class="nc" id="L44">        oldy = i2;</span>
+
+<span class="nc" id="L46">        GameObject clickedObject = GameObjectView.getObjectByView(i1, i2, field);</span>
+
+<span class="nc bnc" id="L48" title="All 2 branches missed.">        if(clickedObject instanceof Ball) {</span>
+<span class="nc" id="L49">            ball = (Ball) clickedObject;</span>
+<span class="nc" id="L50">            oldx = i1;</span>
+<span class="nc" id="L51">            oldy = i2;</span>
+
+<span class="nc" id="L53">            arrowWidget = new ArrowWidget(ball.getPosition());</span>
+        }
+<span class="nc" id="L55">    }</span>
+
+    /**
+     * User selecting direction
+     * @param i old UI x
+     * @param i1 old UI y
+     * @param i2 new UI x
+     * @param i3 new UI y
+     */
+    @Override
+    public void mouseDragged(int i, int i1, int i2, int i3) {
+<span class="nc bnc" id="L66" title="All 2 branches missed.">        if(ball != null) {</span>
+            // calc direction
+<span class="nc" id="L68">            Vector2f start = new Vector2f(oldx, oldy);</span>
+<span class="nc" id="L69">            Vector2f dragged = new Vector2f(i2, i3);</span>
+
+<span class="nc" id="L71">            double angle = Math.atan2(-(dragged.y - start.y), dragged.x - start.x) * 180 / Math.PI;</span>
+<span class="nc" id="L72">            lastDirection = getDirection(angle);</span>
+
+            // set arrow direction by selected user's direction; render is done IGame.render()
+<span class="nc" id="L75">            arrowWidget.setDirection(lastDirection);</span>
+        }
+<span class="nc" id="L77">    }</span>
+
+    public ArrowWidget getArrowWidget() {
+<span class="nc" id="L80">        return arrowWidget;</span>
+    }
+
+    /**
+     * User move ball
+     * @param i mouse button
+     * @param i1 UI x
+     * @param i2 UI y
+     */
+    @Override
+    public void mouseReleased(int i, int i1, int i2) {
+<span class="nc bnc" id="L91" title="All 2 branches missed.">        if(ball != null) {</span>
+
+<span class="nc" id="L93">            ball.move(lastDirection);</span>
+<span class="nc" id="L94">            ball = null;</span>
+<span class="nc" id="L95">            arrowWidget.destroy();</span>
+<span class="nc" id="L96">            arrowWidget = null;</span>
+        }
+<span class="nc" id="L98">    }</span>
+
+    /**
+     * Accept listening mouse event by this class
+     * @return
+     */
+    @Override
+    public boolean isAcceptingInput() {
+<span class="nc" id="L106">        return true;</span>
+    }
+
+    //region Rudimentary methods
+    @Override
+    public void mouseWheelMoved(int i) {
+
+<span class="nc" id="L113">    }</span>
+
+    @Override
+    public void mouseClicked(int i, int i1, int i2, int i3) {
+
+<span class="nc" id="L118">    }</span>
+
+    @Override
+    public void mouseMoved(int i, int i1, int i2, int i3) {
+
+<span class="nc" id="L123">    }</span>
+
+    @Override
+    public void setInput(Input input) {
+
+<span class="nc" id="L128">    }</span>
+
+    @Override
+    public void inputEnded() {
+
+<span class="nc" id="L133">    }</span>
+
+    @Override
+    public void inputStarted() {
+
+<span class="nc" id="L138">    }</span>
+    //endregion
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>

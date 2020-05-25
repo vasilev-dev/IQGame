@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ru"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BallWidget.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">IQGame</a> &gt; <a href="index.source.html" class="el_package">views.widgets.gameobject</a> &gt; <span class="el_source">BallWidget.java</span></div><h1>BallWidget.java</h1><pre class="source lang-java linenums">package views.widgets.gameobject;
+
+import models.Ball;
+import models.Color;
+import models.ColorGameObject;
+import models.GameObject;
+import views.AssetSettings;
+import org.jetbrains.annotations.NotNull;
+import org.newdawn.slick.Image;
+import org.newdawn.slick.Renderable;
+import org.newdawn.slick.SlickException;
+
+import java.util.HashMap;
+
+
+public class BallWidget extends GameObjectWidget {
+<span class="nc" id="L17">    private final HashMap&lt;Color, Image&gt; assets = new HashMap&lt;&gt;();</span>
+
+    public BallWidget(@NotNull GameObject gameObject) throws SlickException {
+<span class="nc" id="L20">        super(gameObject);</span>
+
+<span class="nc bnc" id="L22" title="All 2 branches missed.">        if(!(gameObject instanceof Ball)) {</span>
+<span class="nc" id="L23">            throw new IllegalArgumentException(&quot;Type of gameObject is not Ball&quot;);</span>
+        }
+
+<span class="nc" id="L26">        initializeAssets();</span>
+<span class="nc" id="L27">    }</span>
+
+    private void initializeAssets() throws SlickException {
+<span class="nc" id="L30">        assets.put(Color.YELLOW, new Image(AssetSettings.YELLOW_BALL_FOLDER));</span>
+<span class="nc" id="L31">        assets.put(Color.GREEN, new Image(AssetSettings.GREEN_BALL_FOLDER));</span>
+<span class="nc" id="L32">        assets.put(Color.BLUE, new Image(AssetSettings.BLUE_BALL_FOLDER));</span>
+<span class="nc" id="L33">        assets.put(Color.RED, new Image(AssetSettings.RED_BALL_FOLDER));</span>
+<span class="nc" id="L34">    }</span>
+
+    @Override
+    public Renderable getAsset() throws SlickException {
+<span class="nc" id="L38">        var color = ((ColorGameObject) gameObject).getColor();</span>
+<span class="nc" id="L39">        return assets.get(color);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.4.201905082037</span></div></body></html>
