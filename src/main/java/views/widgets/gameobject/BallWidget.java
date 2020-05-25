@@ -34,7 +34,7 @@ public class BallWidget extends GameObjectWidget {
     }
 
     @Override
-    public Renderable getAsset() throws SlickException {
+    public Renderable getAsset() {
         var color = ((ColorGameObject) gameObject).getColor();
         return assets.get(color);
     }

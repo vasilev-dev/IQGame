@@ -20,4 +20,9 @@ public class AssetSettings {
     public static final String BACKGROUND_FOLDER  = "assets/images/sheets/water.png";
     public static final String ARROW              = "assets/images/arrow_64x64.png";
     public static final String END_SCREEN         = "assets/images/end-screen.jpg";
+
+    public static final String RED_RANDOM_BALL_FOLDER    = "assets/images/random-balls/red.png";
+    public static final String BLUE_RANDOM_BALL_FOLDER   = "assets/images/random-balls/blue.png";
+    public static final String GREEN_RANDOM_BALL_FOLDER  = "assets/images/random-balls/green.png";
+    public static final String YELLOW_RANDOM_BALL_FOLDER = "assets/images/random-balls/yellow.png";
 }
