@@ -156,16 +156,25 @@ public class GameField {
                 position.getX() >= 0 && position.getY() >= 0;
     }
 
+    /**
+     * Get nearest object on field in direction
+     * @param position position on field
+     * @param direction direction for searching nearest object
+     * @return nearest object; null if nearest object is not exists
+     */
     public GameObject getNearestObject(@NotNull Position position, @NotNull Direction.DirectionConstant direction) {
         if(!hasPosition(position)) {
             throw new IllegalArgumentException("GameField hasn't Position" + position.toString());
         }
 
+        // get predicate for filtering object from game object container that has position in direction
         Predicate<GameObject> towardPredicate = getTowardPredicate(position, direction);
         Collection<GameObject> towards;
 
+        // filtering
         towards = gameObjects.parallelStream().filter(towardPredicate).collect(Collectors.toList());
 
+        // get nearest object from towards
         switch (direction) {
             case NORTH:
                 return Collections.max(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getY()));
@@ -178,6 +187,12 @@ public class GameField {
         }
     }
 
+    /**
+     * Get predicate for getting of toward objects
+     * @param position position
+     * @param direction direction
+     * @return predicate for getting of toward objects
+     */
     private Predicate<GameObject> getTowardPredicate(@NotNull Position position,
                                                      @NotNull Direction.DirectionConstant direction) {
         switch (direction) {

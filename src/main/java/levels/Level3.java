@@ -27,6 +27,7 @@ public class Level3 extends LevelBuilder{
         new Ball(new Position(10, 4), field, Color.GREEN);
 
         new RandomBall(new Position(14, 3), field, Color.BLUE);
+        new RandomBall(new Position(8, 3), field, Color.BLUE);
         new RandomBall(new Position(5, 4), field, Color.YELLOW);
         new RandomBall(new Position(14, 5), field, Color.BLUE);
 

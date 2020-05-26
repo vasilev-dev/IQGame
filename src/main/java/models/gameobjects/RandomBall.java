@@ -11,11 +11,17 @@ public class RandomBall extends Ball {
         super(position, field, color);
     }
 
+    /**
+     * Get random number of steps by which to move the ball
+     * @param direction direction of moving
+     * @return random number of step
+     */
     private int getRandomNumberSteps(Direction.DirectionConstant direction) {
         var position = getPosition();
         var nextObjectPosition = field.getNearestObject(position, direction).getPosition();
-        int distance;
+        int distance; // distance between ball position and nearest object in direction
 
+        // calc distance
         if(direction == Direction.DirectionConstant.NORTH || direction == Direction.DirectionConstant.SOUTH) {
             distance = Math.abs(nextObjectPosition.getY() - position.getY());
         }
@@ -23,6 +29,7 @@ public class RandomBall extends Ball {
             distance = Math.abs(nextObjectPosition.getX() - position.getX());
         }
 
+        // ThreadLocalRandom calls throws if range = [1; 1]
         if(distance == 1) {
             return 1;
         }
@@ -34,7 +41,9 @@ public class RandomBall extends Ball {
     public void move(Direction.DirectionConstant direction) {
         Position nextPosition;
         GameObject nextObject;
-        Position throughOneCellPosition;
+
+        // for rule: random balls of the same color can't get close
+        Position throughOneCellPosition; // position through one cell
         GameObject throughOneCellObject;
 
         int steps = getRandomNumberSteps(direction);
@@ -50,6 +59,7 @@ public class RandomBall extends Ball {
             nextObject = field.getGameObject(nextPosition);
             throughOneCellObject = field.getGameObject(throughOneCellPosition);
 
+            // random balls of the same color can't get close
             if(isBallSameColor(throughOneCellObject)) {
                 return;
             }
