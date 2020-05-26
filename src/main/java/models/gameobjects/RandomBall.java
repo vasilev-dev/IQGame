@@ -57,10 +57,16 @@ public class RandomBall extends Ball {
             }
 
             nextObject = field.getGameObject(nextPosition);
-            throughOneCellObject = field.getGameObject(throughOneCellPosition);
+
+            if(field.hasPosition(throughOneCellPosition)) {
+                throughOneCellObject = field.getGameObject(throughOneCellPosition);
+            }
+            else {
+                throughOneCellObject = null;
+            }
 
             // random balls of the same color can't get close
-            if(isBallSameColor(throughOneCellObject)) {
+            if(throughOneCellObject != null && isBallSameColor(throughOneCellObject)) {
                 return;
             }
             else if(nextObject == null) {

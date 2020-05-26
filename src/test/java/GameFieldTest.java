@@ -162,4 +162,34 @@ public class GameFieldTest {
         Assertions.assertFalse(hasPosition);
     }
     //endregion
+
+    //region testing of getNearestObject()
+    public void getNearestObject_north() {
+
+    }
+
+    public void getNearestObject_south() {
+
+    }
+
+    public void getNearestObject_west() {
+
+    }
+
+    public void getNearestObject_east() {
+
+    }
+
+    public void getNearestObject_twoTowards() {
+
+    }
+
+    public void getNearestObject_notExistingPosition() {
+
+    }
+
+    public void getNearestObject_emptyField() {
+
+    }
+    //endregion
 }

@@ -156,6 +156,14 @@ public class GameField {
                 position.getX() >= 0 && position.getY() >= 0;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     /**
      * Get nearest object on field in direction
      * @param position position on field
