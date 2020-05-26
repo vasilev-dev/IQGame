@@ -25,6 +25,11 @@ public class GameFieldWidget implements Drawable {
         initializeWidgets();
     }
 
+    /**
+     * Create game object widgets in game field widget
+     * @throws SlickException if could not open the file with asset
+     */
+    // TODO Вынести получение виджетов в новый класс WidgetFactory
     private void initializeWidgets() throws SlickException {
         for(var obj : gameField.getGameObjects()) {
             if(obj instanceof Ball) {
@@ -39,6 +44,9 @@ public class GameFieldWidget implements Drawable {
         }
     }
 
+    /**
+     * Update widgets if game objects has been changed
+     */
     private void update() {
         for(var widget : widgets) {
             if(widget.getGameObject().getGameField() == null) {
@@ -55,12 +63,20 @@ public class GameFieldWidget implements Drawable {
         drawArrowWidget();
     }
 
+    /**
+     * Draw game object widgets
+     * @throws SlickException if could not render widgets
+     */
     private void drawGameObjectWidgets() throws SlickException {
         for(var widget : widgets) {
             widget.draw();
         }
     }
 
+    /**
+     * Draw arrow if user controls ball
+     * @throws SlickException if could not render widget
+     */
     private void drawArrowWidget() throws SlickException {
         var arrowWidget = ballMovementController.getArrowWidget();
 

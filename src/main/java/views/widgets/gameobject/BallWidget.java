@@ -26,6 +26,10 @@ public class BallWidget extends GameObjectWidget {
         initializeAssets();
     }
 
+    /**
+     * Binding assets by colors
+     * @throws SlickException if could not open the file with asset
+     */
     private void initializeAssets() throws SlickException {
         assets.put(Color.YELLOW, new Image(AssetSettings.YELLOW_BALL_FOLDER));
         assets.put(Color.GREEN, new Image(AssetSettings.GREEN_BALL_FOLDER));

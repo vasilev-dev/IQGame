@@ -7,6 +7,9 @@ import org.newdawn.slick.SlickException;
 import views.widgets.Drawable;
 import views.widgets.HasRenderableAsset;
 
+/**
+ * Rendered when game is passed
+ */
 public class EndScreenWidget implements Drawable, HasRenderableAsset {
     private Image asset;
 

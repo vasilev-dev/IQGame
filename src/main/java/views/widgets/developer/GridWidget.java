@@ -6,6 +6,9 @@ import views.widgets.Drawable;
 
 import static views.AssetSettings.SPRITE_RESOLUTION;
 
+/**
+ * Draw grid
+ */
 public class GridWidget implements Drawable {
     private GameContainer gameContainer;
     private Color color;

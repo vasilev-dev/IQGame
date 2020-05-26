@@ -11,8 +11,12 @@ import views.widgets.HasRenderableAsset;
 
 import static views.AssetSettings.SPRITE_RESOLUTION;
 
+/**
+ * Rendered when user controls ball
+ */
 public class ArrowWidget implements Drawable, HasRenderableAsset {
-    private Position position;
+    private Position position; // position of ball and arrow
+    // direction where the arrow points
     private Direction.DirectionConstant direction = Direction.DirectionConstant.NORTH;
 
     public ArrowWidget(Position position) {
@@ -23,6 +27,10 @@ public class ArrowWidget implements Drawable, HasRenderableAsset {
         this.direction = direction;
     }
 
+    /**
+     * Draw arrow
+     * @throws SlickException if could not render widget
+     */
     public void draw() throws SlickException {
         int x = position.getX() * SPRITE_RESOLUTION;
         int y = position.getY() * SPRITE_RESOLUTION;

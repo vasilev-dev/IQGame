@@ -6,6 +6,9 @@ import views.widgets.Drawable;
 
 import static views.AssetSettings.SPRITE_RESOLUTION;
 
+/**
+ * Shows cell positions
+ */
 public class CellPositionWidget implements Drawable {
     private GameContainer gameContainer;
     private Color color;

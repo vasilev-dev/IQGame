@@ -1,7 +1,7 @@
 package views;
 
 /**
- * Class of setting UI sprites
+ * Storage path to assets and their settings
  */
 public class AssetSettings {
     public static final int SPRITE_RESOLUTION = 64;

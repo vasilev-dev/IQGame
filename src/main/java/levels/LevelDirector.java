@@ -16,6 +16,10 @@ public class LevelDirector {
         levels.add(new Level2().createField());
     }
 
+    /**
+     * Get next level of game
+     * @return
+     */
     public GameField nextLevel() {
         currentLevel++;
         return levels.size() > currentLevel ? levels.get(currentLevel) : null;
@@ -25,6 +29,10 @@ public class LevelDirector {
         return levels.get(currentLevel);
     }
 
+    /**
+     * Current level is passed ?
+     * @return true if current level is passed
+     */
     public boolean currentLevelIsPassed() {
         return getCurrentLevel().getBalls().isEmpty();
     }

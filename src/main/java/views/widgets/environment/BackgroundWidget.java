@@ -10,6 +10,9 @@ import views.widgets.HasRenderableAsset;
 import static views.AssetSettings.BACKGROUND_FOLDER;
 import static views.AssetSettings.SPRITE_RESOLUTION;
 
+/**
+ * Background of game
+ */
 public class BackgroundWidget implements Drawable, HasRenderableAsset {
     private Animation asset;
     private int width, height;

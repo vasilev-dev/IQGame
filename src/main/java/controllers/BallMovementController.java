@@ -22,7 +22,7 @@ public class BallMovementController implements MouseListener {
     private Ball ball;
     private int oldx, oldy; // UI coordinates of user's selected ball
     private DirectionConstant lastDirection; // last direction of user's selected
-    private ArrowWidget arrowWidget;
+    private ArrowWidget arrowWidget; // rendered when the user controls the ball
 
     public BallMovementController(GameField field) {
         this.field = field;
