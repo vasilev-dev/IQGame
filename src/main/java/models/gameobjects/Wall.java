@@ -1,4 +1,6 @@
-package models;
+package models.gameobjects;
+
+import models.Position;
 
 /**
  * Wall

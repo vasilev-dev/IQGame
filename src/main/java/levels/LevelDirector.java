@@ -1,6 +1,6 @@
 package levels;
 
-import models.GameField;
+import models.gameobjects.GameField;
 
 import java.util.ArrayList;
 
@@ -14,6 +14,7 @@ public class LevelDirector {
     public LevelDirector() {
         levels.add(new Level1().createField());
         levels.add(new Level2().createField());
+        levels.add(new Level3().createField());
     }
 
     public GameField nextLevel() {

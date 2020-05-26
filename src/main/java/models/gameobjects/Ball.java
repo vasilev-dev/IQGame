@@ -1,4 +1,8 @@
-package models;
+package models.gameobjects;
+
+import models.Color;
+import models.Direction;
+import models.Position;
 
 /**
  * Ball

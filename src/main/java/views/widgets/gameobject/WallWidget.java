@@ -1,7 +1,7 @@
 package views.widgets.gameobject;
 
-import models.GameObject;
-import models.Wall;
+import models.gameobjects.GameObject;
+import models.gameobjects.Wall;
 import views.AssetSettings;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.Image;

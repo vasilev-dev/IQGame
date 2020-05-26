@@ -1,6 +1,9 @@
 package levels;
 
 import models.*;
+import models.gameobjects.Ball;
+import models.gameobjects.Goal;
+import models.gameobjects.Wall;
 
 public class LevelTest extends LevelBuilder {
     @Override

@@ -1,7 +1,15 @@
-package models;
+package models.gameobjects;
+
+import models.Direction;
+import models.Position;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Game field
@@ -148,11 +156,55 @@ public class GameField {
                 position.getX() >= 0 && position.getY() >= 0;
     }
 
-    public int getWidth() {
-        return width;
+    public GameObject getNearestObject(@NotNull Position position, @NotNull Direction.DirectionConstant direction) {
+        if(!hasPosition(position)) {
+            throw new IllegalArgumentException("GameField hasn't Position" + position.toString());
+        }
+
+        Predicate<GameObject> towardPredicate = getTowardPredicate(position, direction);
+        Collection<GameObject> towards;
+
+        towards = gameObjects.parallelStream().filter(towardPredicate).collect(Collectors.toList());
+
+        switch (direction) {
+            case NORTH:
+                return Collections.max(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getY()));
+            case SOUTH:
+                return Collections.min(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getY()));
+            case WEST:
+                return Collections.max(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getX()));
+            default:
+                return Collections.min(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getX()));
+        }
     }
 
-    public int getHeight() {
-        return height;
+    private Predicate<GameObject> getTowardPredicate(@NotNull Position position,
+                                                     @NotNull Direction.DirectionConstant direction) {
+        switch (direction) {
+            case SOUTH:
+                return object -> {
+                    var objectPosition = object.getPosition();
+                    return objectPosition.getX() == position.getX() &&
+                            objectPosition.getY() > position.getY();
+                };
+            case NORTH:
+                return object -> {
+                    var objectPosition = object.getPosition();
+                    return objectPosition.getX() == position.getX() &&
+                            objectPosition.getY() < position.getY();
+                };
+            case WEST:
+                return object -> {
+                    var objectPosition = object.getPosition();
+                    return objectPosition.getX() < position.getX() &&
+                            objectPosition.getY() == position.getY();
+                };
+            default:
+                return object -> {
+                    var objectPosition = object.getPosition();
+                    return objectPosition.getX() > position.getX() &&
+                            objectPosition.getY() == position.getY();
+                };
+        }
     }
 }

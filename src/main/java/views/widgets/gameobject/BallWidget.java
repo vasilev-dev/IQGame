@@ -1,9 +1,9 @@
 package views.widgets.gameobject;
 
-import models.Ball;
+import models.gameobjects.Ball;
 import models.Color;
-import models.ColorGameObject;
-import models.GameObject;
+import models.gameobjects.ColorGameObject;
+import models.gameobjects.GameObject;
 import views.AssetSettings;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.Image;

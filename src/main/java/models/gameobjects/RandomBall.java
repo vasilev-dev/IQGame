@@ -1,23 +1,33 @@
-package models;
+package models.gameobjects;
 
-import java.util.Random;
+import models.Color;
+import models.Direction;
+import models.Position;
+
+import java.util.concurrent.ThreadLocalRandom;
 
 public class RandomBall extends Ball {
-    private Random random = new Random();
-
     public RandomBall(Position position, GameField field, Color color) {
         super(position, field, color);
     }
 
-    private int getRandomNumberSteps(Direction.DirectionConstant directionConstant) {
+    private int getRandomNumberSteps(Direction.DirectionConstant direction) {
         var position = getPosition();
+        var nextObjectPosition = field.getNearestObject(position, direction).getPosition();
+        int distance;
 
-        if(directionConstant == Direction.DirectionConstant.NORTH ||
-                directionConstant == Direction.DirectionConstant.SOUTH) {
-            return field.getHeight() - position.getY();
+        if(direction == Direction.DirectionConstant.NORTH || direction == Direction.DirectionConstant.SOUTH) {
+            distance = Math.abs(nextObjectPosition.getY() - position.getY());
+        }
+        else {
+            distance = Math.abs(nextObjectPosition.getX() - position.getX());
         }
 
-        return field.getWidth() - position.getX();
+        if(distance == 1) {
+            return 1;
+        }
+
+        return ThreadLocalRandom.current().nextInt(1, distance);
     }
 
     @Override
