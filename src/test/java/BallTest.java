@@ -1,4 +1,4 @@
-import levels.LevelTest;
+import levels.TestLevel;
 import models.*;
 import models.gameobjects.Ball;
 import models.gameobjects.GameField;
@@ -11,7 +11,7 @@ public class BallTest {
 
     @BeforeEach
     public void setUp() {
-        testLevel = new LevelTest().createField();
+        testLevel = new TestLevel().createField();
     }
 
     @Test

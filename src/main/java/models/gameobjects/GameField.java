@@ -182,6 +182,10 @@ public class GameField {
         // filtering
         towards = gameObjects.parallelStream().filter(towardPredicate).collect(Collectors.toList());
 
+        if(towards.isEmpty()) {
+            return null;
+        }
+
         // get nearest object from towards
         switch (direction) {
             case NORTH:

@@ -5,7 +5,7 @@ import models.gameobjects.Ball;
 import models.gameobjects.Goal;
 import models.gameobjects.Wall;
 
-public class LevelTest extends LevelBuilder {
+public class TestLevel extends LevelBuilder {
     @Override
     public LevelBuilder createWalls() {
         new Wall(new Position(12, 1), field);

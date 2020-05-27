@@ -1,4 +1,4 @@
-import levels.LevelTest;
+import levels.TestLevel;
 import models.*;
 import models.gameobjects.Ball;
 import models.gameobjects.GameField;
@@ -12,7 +12,7 @@ public class GameFieldTest {
 
     @BeforeEach
     public void setUp() {
-        testLevel = new LevelTest().createField();
+        testLevel = new TestLevel().createField();
     }
 
     //region testing of getGameObject()
@@ -164,32 +164,71 @@ public class GameFieldTest {
     //endregion
 
     //region testing of getNearestObject()
+    @Test
     public void getNearestObject_north() {
+        var position = new Position(6,4);
 
+        var result = testLevel.getNearestObject(position, Direction.DirectionConstant.NORTH);
+        var expected = testLevel.getGameObject(new Position(6, 1));
+
+        Assertions.assertEquals(result, expected);
     }
 
+    @Test
     public void getNearestObject_south() {
+        var position = new Position(6,2);
 
+        var result = testLevel.getNearestObject(position, Direction.DirectionConstant.SOUTH);
+        var expected = testLevel.getGameObject(new Position(6, 4));
+
+        Assertions.assertEquals(result, expected);
     }
 
+    @Test
     public void getNearestObject_west() {
+        var position = new Position(18,1);
 
+        var result = testLevel.getNearestObject(position, Direction.DirectionConstant.WEST);
+        var expected = testLevel.getGameObject(new Position(12, 1));
+
+        Assertions.assertEquals(result, expected);
     }
 
+    @Test
     public void getNearestObject_east() {
+        var position = new Position(1,1);
 
+        var result = testLevel.getNearestObject(position, Direction.DirectionConstant.EAST);
+        var expected = testLevel.getGameObject(new Position(6, 1));
+
+        Assertions.assertEquals(result, expected);
     }
 
+    @Test
     public void getNearestObject_twoTowards() {
+        var position = new Position(6,7);
 
+        var result = testLevel.getNearestObject(position, Direction.DirectionConstant.NORTH);
+        var expected = testLevel.getGameObject(new Position(6, 4));
+
+        Assertions.assertEquals(result, expected);
     }
 
+    @Test
     public void getNearestObject_notExistingPosition() {
+        var position = new Position(100, 100);
 
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> testLevel.getNearestObject(position, Direction.DirectionConstant.NORTH));
     }
 
-    public void getNearestObject_emptyField() {
+    @Test
+    public void getNearestObject_notNearest() {
+        var position = new Position(6,4);
 
+        var result = testLevel.getNearestObject(position, Direction.DirectionConstant.WEST);
+
+        Assertions.assertNull(result);
     }
     //endregion
 }
