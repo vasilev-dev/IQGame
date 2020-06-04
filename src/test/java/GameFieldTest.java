@@ -1,6 +1,6 @@
 import levels.TestLevel;
 import models.*;
-import models.gameobjects.Ball;
+import models.gameobjects.balls.StandardBall;
 import models.gameobjects.GameField;
 import models.gameobjects.GameObject;
 import org.junit.jupiter.api.Assertions;
@@ -21,8 +21,8 @@ public class GameFieldTest {
         GameObject object = testLevel.getGameObject(new Position(6, 4));
 
         boolean expected = object.getPosition().equals(new Position(6, 4)) &&
-                object instanceof Ball &&
-                ((Ball) object).getColor() == Color.BLUE;
+                object instanceof StandardBall &&
+                ((StandardBall) object).getColor() == Color.BLUE;
 
         Assertions.assertTrue(expected);
     }
@@ -76,10 +76,10 @@ public class GameFieldTest {
     //region testing of addGameObject()
     @Test
     public void addGameObject_default() {
-        Ball ball = new Ball(new Position(0, 0), testLevel, Color.BLUE);
+        StandardBall ball = new StandardBall(new Position(0, 0), testLevel, Color.BLUE);
 
         // white-box test: getGameObject() checks game objects container
-        Ball result = (Ball) testLevel.getGameObject(new Position(0, 0));
+        StandardBall result = (StandardBall) testLevel.getGameObject(new Position(0, 0));
 
         Assertions.assertEquals(ball, result);
     }
@@ -87,7 +87,7 @@ public class GameFieldTest {
     @Test
     public void addGameObject_busyPosition() {
         Assertions.assertThrows(IllegalArgumentException.class,
-                () -> new Ball(new Position(6, 4), testLevel, Color.BLUE));
+                () -> new StandardBall(new Position(6, 4), testLevel, Color.BLUE));
     }
 
     @Test
@@ -101,7 +101,7 @@ public class GameFieldTest {
     public void destroyGameObject_existing() {
         Position position = new Position(6, 4);
 
-        Ball deleting = (Ball) testLevel.getGameObject(position);
+        StandardBall deleting = (StandardBall) testLevel.getGameObject(position);
         testLevel.destroyGameObject(deleting);
 
         GameObject deleted = testLevel.getGameObject(position);
@@ -113,7 +113,7 @@ public class GameFieldTest {
     public void destroyGameObject_notExisting() {
         Position position = new Position(6, 4);
 
-        Ball deleted = (Ball) testLevel.getGameObject(position);
+        StandardBall deleted = (StandardBall) testLevel.getGameObject(position);
         testLevel.destroyGameObject(deleted);
 
         Assertions.assertThrows(IllegalArgumentException.class, () -> testLevel.destroyGameObject(deleted));

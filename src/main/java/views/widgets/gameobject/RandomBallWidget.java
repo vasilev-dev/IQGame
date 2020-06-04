@@ -3,7 +3,7 @@ package views.widgets.gameobject;
 import models.*;
 import models.gameobjects.ColorGameObject;
 import models.gameobjects.GameObject;
-import models.gameobjects.RandomBall;
+import models.gameobjects.balls.RandomBall;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Renderable;

@@ -2,6 +2,7 @@ package models.gameobjects;
 
 import models.Direction;
 import models.Position;
+import models.gameobjects.balls.Ball;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;

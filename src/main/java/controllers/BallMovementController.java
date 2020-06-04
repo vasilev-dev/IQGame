@@ -1,6 +1,6 @@
 package controllers;
 
-import models.gameobjects.Ball;
+import models.gameobjects.balls.Ball;
 import models.Direction.*;
 import models.gameobjects.GameField;
 import models.gameobjects.GameObject;

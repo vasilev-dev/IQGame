@@ -1,5 +1,7 @@
 package models;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
 
 /**
@@ -58,5 +60,22 @@ public class Position {
     @Override
     public String toString() {
         return "(" + Integer.toString(x) + ";" + Integer.toString(y) + ")";
+    }
+
+    /**
+     * Get the distance between two positions that lie on the same straight line
+     * @param position second position
+     * @return distance between two positions
+     */
+    public int distance(@NotNull Position position) {
+        if(x == position.x) {
+            return Math.abs(y - position.y);
+        }
+        else if(y == position.y) {
+            return Math.abs(x - position.x);
+        }
+        else {
+            throw new IllegalArgumentException("Position don't lie on the same straight line");
+        }
     }
 }

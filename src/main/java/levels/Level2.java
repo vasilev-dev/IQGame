@@ -1,7 +1,7 @@
 package levels;
 
 import models.*;
-import models.gameobjects.Ball;
+import models.gameobjects.balls.StandardBall;
 import models.gameobjects.Goal;
 import models.gameobjects.Wall;
 
@@ -25,12 +25,12 @@ public class Level2 extends LevelBuilder {
 
     @Override
     public LevelBuilder createBalls() {
-        new Ball(new Position(13, 7), field, Color.RED);
-        new Ball(new Position(10, 4), field, Color.GREEN);
+        new StandardBall(new Position(13, 7), field, Color.RED);
+        new StandardBall(new Position(10, 4), field, Color.GREEN);
 
-        new Ball(new Position(14, 3), field, Color.BLUE);
-        new Ball(new Position(5, 4), field, Color.YELLOW);
-        new Ball(new Position(14, 5), field, Color.BLUE);
+        new StandardBall(new Position(14, 3), field, Color.BLUE);
+        new StandardBall(new Position(5, 4), field, Color.YELLOW);
+        new StandardBall(new Position(14, 5), field, Color.BLUE);
 
         return this;
     }

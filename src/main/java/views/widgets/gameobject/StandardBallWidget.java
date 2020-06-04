@@ -1,6 +1,6 @@
 package views.widgets.gameobject;
 
-import models.gameobjects.Ball;
+import models.gameobjects.balls.Ball;
 import models.Color;
 import models.gameobjects.ColorGameObject;
 import models.gameobjects.GameObject;
@@ -13,10 +13,10 @@ import org.newdawn.slick.SlickException;
 import java.util.HashMap;
 
 
-public class BallWidget extends GameObjectWidget {
+public class StandardBallWidget extends GameObjectWidget {
     private final HashMap<Color, Image> assets = new HashMap<>();
 
-    public BallWidget(@NotNull GameObject gameObject) throws SlickException {
+    public StandardBallWidget(@NotNull GameObject gameObject) throws SlickException {
         super(gameObject);
 
         if(!(gameObject instanceof Ball)) {

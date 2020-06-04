@@ -2,7 +2,7 @@ import models.Color;
 import models.Direction;
 import models.Position;
 import models.gameobjects.GameField;
-import models.gameobjects.RandomBall;
+import models.gameobjects.balls.RandomBall;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
