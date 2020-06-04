@@ -1,4 +1,4 @@
-package models.gameobjects.movement;
+package models.gameobjects;
 
 import models.Direction;
 
