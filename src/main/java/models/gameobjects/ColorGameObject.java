@@ -1,4 +1,7 @@
-package models;
+package models.gameobjects;
+
+import models.Color;
+import models.Position;
 
 /**
  * Color game object

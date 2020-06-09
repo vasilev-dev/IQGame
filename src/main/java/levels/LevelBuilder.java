@@ -1,6 +1,6 @@
 package levels;
 
-import models.GameField;
+import models.gameobjects.GameField;
 
 /**
  * Create game objects

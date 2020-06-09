@@ -1,6 +1,6 @@
 package views.widgets.gameobject;
 
-import models.GameObject;
+import models.gameobjects.GameObject;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.SlickException;
 import views.widgets.Drawable;

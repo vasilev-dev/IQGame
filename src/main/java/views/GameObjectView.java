@@ -1,7 +1,7 @@
 package views;
 
-import models.GameField;
-import models.GameObject;
+import models.gameobjects.GameField;
+import models.gameobjects.GameObject;
 import models.Position;
 
 import static views.AssetSettings.SPRITE_RESOLUTION;

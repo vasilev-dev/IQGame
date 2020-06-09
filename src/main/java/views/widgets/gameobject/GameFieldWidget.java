@@ -1,11 +1,13 @@
 package views.widgets.gameobject;
 
 import controllers.BallMovementController;
-import models.*;
+import models.gameobjects.*;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.Input;
 import org.newdawn.slick.SlickException;
 import views.widgets.Drawable;
+import models.gameobjects.balls.StandardBall;
+import models.gameobjects.balls.RandomBall;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -32,8 +34,11 @@ public class GameFieldWidget implements Drawable {
     // TODO Вынести получение виджетов в новый класс WidgetFactory
     private void initializeWidgets() throws SlickException {
         for(var obj : gameField.getGameObjects()) {
-            if(obj instanceof Ball) {
-                widgets.add(new BallWidget(obj));
+            if(obj instanceof RandomBall) {
+                widgets.add(new RandomBallWidget(obj));
+            }
+            else if(obj instanceof StandardBall) {
+                widgets.add(new StandardBallWidget(obj));
             }
             else if(obj instanceof Goal) {
                 widgets.add(new GoalWidget(obj));

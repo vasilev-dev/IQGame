@@ -1,9 +1,9 @@
 package views.widgets.gameobject;
 
-import models.Ball;
+import models.gameobjects.balls.Ball;
 import models.Color;
-import models.ColorGameObject;
-import models.GameObject;
+import models.gameobjects.ColorGameObject;
+import models.gameobjects.GameObject;
 import views.AssetSettings;
 import org.jetbrains.annotations.NotNull;
 import org.newdawn.slick.Image;
@@ -13,10 +13,10 @@ import org.newdawn.slick.SlickException;
 import java.util.HashMap;
 
 
-public class BallWidget extends GameObjectWidget {
+public class StandardBallWidget extends GameObjectWidget {
     private final HashMap<Color, Image> assets = new HashMap<>();
 
-    public BallWidget(@NotNull GameObject gameObject) throws SlickException {
+    public StandardBallWidget(@NotNull GameObject gameObject) throws SlickException {
         super(gameObject);
 
         if(!(gameObject instanceof Ball)) {
@@ -38,7 +38,7 @@ public class BallWidget extends GameObjectWidget {
     }
 
     @Override
-    public Renderable getAsset() throws SlickException {
+    public Renderable getAsset() {
         var color = ((ColorGameObject) gameObject).getColor();
         return assets.get(color);
     }

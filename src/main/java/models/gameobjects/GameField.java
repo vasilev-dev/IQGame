@@ -1,7 +1,16 @@
-package models;
+package models.gameobjects;
+
+import models.Direction;
+import models.Position;
+import models.gameobjects.balls.Ball;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Game field
@@ -146,5 +155,84 @@ public class GameField {
     public boolean hasPosition(Position position) {
         return position.getX() < width && position.getY() < height &&
                 position.getX() >= 0 && position.getY() >= 0;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    /**
+     * Get nearest object on field in direction
+     * @param position position on field
+     * @param direction direction for searching nearest object
+     * @return nearest object; null if nearest object is not exists
+     */
+    public GameObject getNearestObject(@NotNull Position position, @NotNull Direction.DirectionConstant direction) {
+        if(!hasPosition(position)) {
+            throw new IllegalArgumentException("GameField hasn't Position" + position.toString());
+        }
+
+        // get predicate for filtering object from game object container that has position in direction
+        Predicate<GameObject> towardPredicate = getTowardPredicate(position, direction);
+        Collection<GameObject> towards;
+
+        // filtering
+        towards = gameObjects.parallelStream().filter(towardPredicate).collect(Collectors.toList());
+
+        if(towards.isEmpty()) {
+            return null;
+        }
+
+        // get nearest object from towards
+        switch (direction) {
+            case NORTH:
+                return Collections.max(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getY()));
+            case SOUTH:
+                return Collections.min(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getY()));
+            case WEST:
+                return Collections.max(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getX()));
+            default:
+                return Collections.min(towards, Comparator.comparing(gameObject -> gameObject.getPosition().getX()));
+        }
+    }
+
+    /**
+     * Get predicate for getting of toward objects
+     * @param position position
+     * @param direction direction
+     * @return predicate for getting of toward objects
+     */
+    private Predicate<GameObject> getTowardPredicate(@NotNull Position position,
+                                                     @NotNull Direction.DirectionConstant direction) {
+        switch (direction) {
+            case SOUTH:
+                return object -> {
+                    var objectPosition = object.getPosition();
+                    return objectPosition.getX() == position.getX() &&
+                            objectPosition.getY() > position.getY();
+                };
+            case NORTH:
+                return object -> {
+                    var objectPosition = object.getPosition();
+                    return objectPosition.getX() == position.getX() &&
+                            objectPosition.getY() < position.getY();
+                };
+            case WEST:
+                return object -> {
+                    var objectPosition = object.getPosition();
+                    return objectPosition.getX() < position.getX() &&
+                            objectPosition.getY() == position.getY();
+                };
+            default:
+                return object -> {
+                    var objectPosition = object.getPosition();
+                    return objectPosition.getX() > position.getX() &&
+                            objectPosition.getY() == position.getY();
+                };
+        }
     }
 }

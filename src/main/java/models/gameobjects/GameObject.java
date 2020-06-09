@@ -1,4 +1,6 @@
-package models;
+package models.gameobjects;
+
+import models.Position;
 
 /**
  * Game object
@@ -22,7 +24,7 @@ public abstract class GameObject {
         return position;
     }
 
-    protected boolean setPosition(Position position) {
+    public boolean setPosition(Position position) {
         if(position == null) {
             this.position = null;
 

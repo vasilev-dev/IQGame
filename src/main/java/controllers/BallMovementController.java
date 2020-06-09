@@ -1,9 +1,9 @@
 package controllers;
 
-import models.Ball;
+import models.gameobjects.balls.Ball;
 import models.Direction.*;
-import models.GameField;
-import models.GameObject;
+import models.gameobjects.GameField;
+import models.gameobjects.GameObject;
 import views.GameObjectView;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.Input;
